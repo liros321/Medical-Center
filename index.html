@@ -206,7 +206,7 @@
       const total = precoUnit * qtd;
       const lideranca = isLideranca ? "Sim" : isNaoLideranca ? "Não" : "Não informado";
 
-      const mensagem = `**📦 NOVA ENCOMENDA - MEDICAL CENTER**\n👤 Nome: ${nome}\n🪪 RG: ${rg}\n📞 Telefone: ${tel}\n🧑‍💻 Discord: ${discord}\n🏷️ Liderança de organização: ${lideranca}\n\n📌 ${itemNome}: ${qtd}x\n💰 Total: R$ ${total.toLocaleString()}\n<@&139166344658>`;
+      const mensagem = `**📦 NOVA ENCOMENDA - MEDICAL CENTER**\n👤 Nome: ${nome}\n🪪 RG: ${rg}\n📞 Telefone: ${tel}\n🧑‍💻 Discord: ${discord}\n🏷️ Liderança de organização: ${lideranca}\n\n📌 ${itemNome}: ${qtd}x\n💰 Total: R$ ${total.toLocaleString()}\n<@&1391663446587867146>`;
 
       fetch("https://discord.com/api/webhooks/1391655582028660838/a2slfK5c1IPKzFmg0EtDSvG2VDXcC1VIjM7EqYedSyWCQ-qA58RQBV6F6tipaaj4oE98", {
         method: "POST",
