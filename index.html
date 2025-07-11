@@ -259,22 +259,30 @@
       const discord = document.getElementById("discord").value.trim();
       const isLider = document.querySelector('input[name="lideranca"]:checked').value === "sim";
       const btn = document.querySelector(".btn-enviar");
+
       if (!nome || !rg || !tel || !discord) {
         alert("⚠️ Preencha todos os campos obrigatórios.");
         return;
       }
+
       let itensStr = "";
+      let valorTotal = 0;
+
       document.querySelectorAll('.card').forEach(card => {
         const qtd = parseInt(card.querySelector('span').innerText);
         const nomeItem = card.getAttribute("data-nome");
+        const preco = parseInt(card.getAttribute("data-preco"));
         if (qtd > 0) {
           itensStr += `• ${nomeItem}: ${qtd}x\n`;
+          valorTotal += qtd * preco;
         }
       });
+
       if (!itensStr) {
         alert("⚠️ Selecione ao menos um item.");
         return;
       }
+
       fetch("https://discord.com/api/webhooks/1391655582028660838/a2slfK5c1IPKzFmg0EtDSvG2VDXcC1VIjM7EqYedSyWCQ-qA58RQBV6F6tipaaj4oE98", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -289,6 +297,7 @@
               { name: "📞 Telefone", value: tel, inline: true },
               { name: "🧑‍💻 Discord", value: discord, inline: true },
               { name: "🏷️ Liderança", value: isLider ? "Sim" : "Não", inline: true },
+              { name: "💰 Valor Total", value: `R$ ${valorTotal.toLocaleString()}`, inline: true },
               { name: "Itens Encomendados", value: itensStr }
             ],
             footer: { text: `Solicitante: ${nome}` },
